@@ -2,9 +2,28 @@
 
 
 ## 0. Develop Environment
+```
+Docker Image
+- tensorflow/tensorflow:tensorflow:2.4.0-gpu-jupyter
+
+Library
+- Pytorch : Stable (1.7.1) - Linux - Python - CUDA (11.0)
+```
+- Using Single GPU (not tested on cpu only)
 
 
 ## 1. Explain about Implementation
+- model.py : VGG-16 Large FOV, DenseCRF, DeepLab v1
+- train.py : train VGG-16 Large FOV only (grid search on model.py)
+- utils.py : calculate mIoU
+- Used similar train settings of paper when training VGG-16 Large FOV
+  * input : (3, 224, 224)
+  * batch size : 30
+  * learning rate : 0.001
+  * momentum : 0.9
+  * weight decay : 0.0005
+  * no learning rate scheduler for convenience
+- mIoU score may be quite different with paper cause of lack of learning rate scheduler
 
 
 ## 2. Brief Summary of *'Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs'*
